@@ -10,15 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0b10;--card:#121219;--text:#e9e9f2;--muted:#a4a4b6;--accent:#6ee7b7;--ring:#272739}
+    :root{--bg:#0b0b10;--card:#121219;--text:#e9e9f2;--muted:#a4a4b6;--accent:#6ee7b7;--ring:#272739;--warn:#f59e0b}
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 600px at 80% -10%,#1b1b27,transparent),linear-gradient(180deg,#0b0b10 0%,#0b0b10 100%)}
     a{color:inherit;text-decoration:none}
     .container{max-width:1180px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;flex-wrap:wrap}
-    .brand{display:flex;flex-direction:column;gap:4px}
-    .brand strong{font-size:22px;letter-spacing:0.6px;color:var(--accent)}
-    .brand span.slogan{font-size:13px;color:var(--muted);font-style:italic}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand strong{font-size:18px}
     .badge{font-size:12px;border:1px solid var(--ring);padding:4px 8px;border-radius:999px;color:var(--muted)}
     .controls{display:flex;gap:10px;flex-wrap:wrap}
     select,input{background:#0f0f16;border:1px solid var(--ring);color:var(--text);border-radius:10px;padding:10px}
@@ -27,89 +26,67 @@
     .card{background:linear-gradient(180deg,#13131b,#0e0e16);border:1px solid var(--ring);border-radius:16px;padding:16px}
     .pack-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
     .price{font-weight:700;font-size:22px}
+    .surdevis{font-weight:700;font-size:13px;color:#111;background:linear-gradient(180deg,#ffe08a,#facc15);padding:6px 10px;border-radius:999px;border:1px solid #a37d00}
     .muted{color:var(--muted)}
     .feat{font-size:13px;color:var(--muted);margin:6px 0}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:12px;border:1px solid var(--ring);background:linear-gradient(180deg,#151520,#0f0f17);color:var(--text);font-weight:600}
     .btn.primary{border-color:transparent;background:linear-gradient(180deg,#2b4c2f,#1b2b1e)}
     h2{margin:18px 0 8px}
-    .section-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .section-head{display:flex;align-items:center;justify-content:space-between}
     footer{padding:36px 0;color:var(--muted);text-align:center}
-    #gate{position:fixed;inset:0;background:rgba(9,9,14,.92);display:none;place-items:center;backdrop-filter:blur(8px);z-index:60}
+    #gate{position:fixed;inset:0;background:rgba(9,9,14,.92);display:none;place-items:center;backdrop-filter:blur(8px)}
     #gate .box{width:min(96%,420px);background:#0f0f16;border:1px solid var(--ring);border-radius:14px;padding:20px;text-align:center}
     #gate input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--ring);background:#0b0b12;color:var(--text)}
-
-    /* Intro plein écran */
-    .intro{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,#0b0b10,#0b0b10);z-index:50;border-bottom:1px solid var(--ring);transition:opacity .35s ease, transform .35s ease}
-    .intro.hidden{opacity:0;transform:translateY(8px);pointer-events:none}
-    .intro-card{width:min(92%,680px);background:linear-gradient(180deg,#121219,#0f0f16);border:1px solid var(--ring);border-radius:16px;padding:28px;text-align:center}
-    .intro h1{margin:0 0 6px;color:var(--accent);letter-spacing:.6px}
-    .intro p{margin:0 0 16px;color:var(--muted)}
-
-    /* Barre de contact flottante */
-    #contact-dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:70;display:grid;grid-auto-flow:column;gap:10px;padding:8px 10px;border:1px solid var(--ring);border-radius:14px;background:rgba(16,16,24,.86);backdrop-filter:blur(10px)}
-    .dock-btn{display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;border:1px solid var(--ring);position:relative;background:#0f0f16;color:var(--text)}
-    .dock-btn svg{width:18px;height:18px}
-    .dock-btn span{font-size:12px}
-    .share-toast{position:absolute;left:50%;transform:translate(-50%,8px);bottom:38px;background:#1e7a3a;color:white;padding:6px 10px;border-radius:10px;font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease}
-    .share-toast.show{opacity:1;transform:translate(-50%,0)}
-    @media(min-width: 820px){#contact-dock{display:none}}
-    body{padding-bottom:76px}
+    /* bouton partager en haut droite */
+    .share-right{margin-left:auto}
+    .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:linear-gradient(180deg,#1f4d2a,#15351d);border:1px solid #1f3b26}
+    .share-icon{width:18px;height:18px;display:inline-block;border-radius:4px;background:#16a34a}
   </style>
 </head>
 <body>
-  <!-- Portail privé (clé) -->
   <div id="gate"><div class="box"><h3>Accès privé</h3><p class="muted">Entre la clé partagée pour consulter.</p><input id="gateKey" type="password" placeholder="Clé d'accès" /><div style="margin-top:10px" class="controls"><button class="btn" onclick="checkKey()">Entrer</button></div></div></div>
-
-  <!-- Page d'accueil / Intro -->
-  <section id="intro" class="intro" aria-label="Accueil JEFE IPTV 29">
-    <div class="intro-card">
-      <h1>JEFE IPTV 29</h1>
-      <p>Streaming illimité, qualité garantie</p>
-      <div class="controls" style="justify-content:center">
-        <button id="enterBtn" class="btn primary">Entrer dans le catalogue</button>
-        <span class="badge">lien privé — bouche à oreille</span>
-      </div>
-    </div>
-  </section>
 
   <div class="container">
     <header>
       <div class="brand">
-        <strong>JEFE IPTV 29</strong>
-        <span class="slogan">Streaming illimité, qualité garantie</span>
-        <span class="badge">Catalogue privé</span>
+        <strong>JEFE IPTV 29 — Catalogue privé</strong>
+        <span class="badge">lien partagé uniquement</span>
+      </div>
+
+      <div class="controls share-right">
+        <button id="shareBtn" class="share-btn" title="Partager">
+          <span class="share-icon"></span><span>Partager</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="section-head">
+      <div>
+        <h2>Packs disponibles</h2>
+        <p class="muted">Choisis ton offre et contacte-moi en 1 clic. <span class="badge">anti-indexation active</span></p>
       </div>
       <div class="controls">
         <select id="filterCat">
           <option value="all">Toutes catégories</option>
           <option value="individuel">Abonnements individuels</option>
           <option value="double">Packs doubles & promos</option>
-          <option value="autres">Autres (Kids, VOD, VPN)</option>
-          <option value="apps">Applications & lecteurs</option>
+          <option value="options">Options / Kids / VOD / VPN</option>
+          <option value="services">Services streaming (sur devis)</option>
         </select>
         <input id="search" placeholder="Rechercher un pack…" />
         <a id="whatsBtn" class="btn primary" target="_blank">Demander un devis</a>
       </div>
-    </header>
-
-    <section class="section-head">
-      <div>
-        <h2>Offres JEFE IPTV 29</h2>
-        <p class="muted">Choisis ton offre et contacte-moi en 1 clic. <span class="badge">anti-indexation active</span></p>
-      </div>
-      <span class="badge">Paiements: Virement • Lydia • PayPal</span>
     </section>
 
-    <div id="packs" class="grid packs" aria-live="polite"></div>
+    <div id="packs" class="grid packs"></div>
 
     <section id="contact" style="margin-top:22px" class="grid" >
       <div class="card">
         <h3 style="margin:0 0 8px">Me contacter</h3>
         <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
           <a class="btn" id="waLink" target="_blank">WhatsApp</a>
-          <a class="btn" id="fbLink" target="_blank">Facebook</a>
-          <a class="btn" id="scLink" target="_blank">Snapchat</a>
-          <a class="btn" href="mailto:jefeiptv29@gmail.com?subject=Demande%20JEFE%20IPTV%2029&body=Bonjour,%20je%20souhaite%20des%20infos%20sur%20vos%20packs." target="_blank">Email</a>
+          <a class="btn" id="mailLink" target="_blank">Mail</a>
+          <a class="btn" id="snapLink" target="_blank">Snapchat</a>
         </div>
       </div>
       <div class="card">
@@ -123,48 +100,26 @@
     </section>
 
     <footer>
-      © <span id="year"></span> — JEFE IPTV 29. Page privée (non référencée). Respecte les lois locales et CGU des services.
+      © <span id="year"></span> — Page privée (non référencée). Respecte les lois locales et CGU des services.
     </footer>
   </div>
-
-  <!-- Barre de contact flottante (mobile) -->
-  <nav id="contact-dock" aria-label="Contact rapide">
-    <a id="dock-wa" class="dock-btn" aria-label="WhatsApp" title="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.08 1.52 5.78L0 24l6.39-1.67A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.21-1.26-6.21-3.48-8.52zM12 21.82a9.77 9.77 0 01-4.98-1.36l-.36-.21-3.79.99 1.01-3.69-.24-.38A9.82 9.82 0 1121.82 12 9.84 9.84 0 0112 21.82zm5.52-6.16c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.06 2.9 1.2 3.1.15.2 2.1 3.2 5.07 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35z"/></svg>
-      <span>WhatsApp</span>
-    </a>
-    <a id="dock-mail" class="dock-btn" aria-label="Email" title="Email" href="mailto:jefeiptv29@gmail.com?subject=Demande%20JEFE%20IPTV%2029&body=Bonjour,%20je%20souhaite%20des%20infos%20sur%20vos%20packs.">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      <span>Email</span>
-    </a>
-    <a id="dock-snap" class="dock-btn" target="_blank" aria-label="Snapchat" title="Snapchat" href="https://www.snapchat.com/add/jefeiptv">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c-3.02 0-5.48 2.46-5.48 5.48 0 1.27.43 2.44 1.15 3.37.3.38.45.85.4 1.33-.12 1.2-.66 2-2.17 2.38-.21.05-.43.1-.67.15-.35.07-.6.38-.6.73 0 .41.34.75.75.75.07 0 .14 0 .21-.02.28-.05.56-.11.82-.18.16-.04.31-.07.45-.1.04.21.07.43.1.66.09.73.43 1.4.97 1.92.62.6 1.46.93 2.33.93.38 0 .77-.06 1.14-.19.37.13.76.19 1.14.19.87 0 1.71-.33 2.33-.93.54-.52.88-1.19.97-1.92.03-.23.06-.45.1-.66.14.03.29.06.45.1.26.07.54.13.82.18.07.02.14.02.21.02.41 0 .75-.34.75-.75 0-.35-.25-.66-.6-.73-.24-.05-.46-.1-.67-.15-1.51-.38-2.05-1.18-2.17-2.38-.05-.48.1-.95.4-1.33.72-.93 1.15-2.1 1.15-3.37C17.48 4.46 15.02 2 12 2z"/></svg>
-      <span>Snap</span>
-    </a>
-    <!-- Bouton Partager -->
-    <button id="dock-share" class="dock-btn" aria-label="Partager" title="Partager" type="button">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a3.27 3.27 0 000-1.39l7.02-4.11A2.99 2.99 0 0018 7.91 3 3 0 1015 5a2.99 2.99 0 001.04 2.28l-7.02 4.11a3 3 0 100 3.22l7.02 4.11A2.99 2.99 0 0015 21a3 3 0 103-2.92z"/></svg>
-      <span>Partager</span>
-      <span id="share-toast" class="share-toast" role="status" aria-live="polite">Lien JEFE IPTV copié</span>
-    </button>
-  </nav>
 
   <script>
     // ====== PARAMÈTRES ======
     const SETTINGS = {
-      secretKey: 'jefe29',
+      secretKey: 'jefe29', // clé d’accès
       owner: {
         displayName: 'JEFE IPTV 29',
-        whatsapp: '', // à renseigner plus tard
-        email: 'jefeiptv29@gmail.com',
+        whatsapp: '33612345678', // format international sans +
+        email: 'mailto:jefeiptv29@gmail.com',
         snapchat: 'https://www.snapchat.com/add/jefeiptv',
-        facebook: '#',
         defaultMessage: 'Salut! Je viens de voir tes packs privés. Intéressé par: {{PACK}}.'
       }
     }
 
-    // ====== DONNÉES DES PACKS (tarifs +35€ inclus) ======
+    // ====== DONNÉES DES PACKS (les “licences” ont été supprimées) ======
     const DATA = [
+      // Individuels
       {t:'Abonnement IPTV France SD — 1 an', p:47.83, c:'individuel', d:'TV FR en SD + chaînes belges/suisses. Sans films & séries.'},
       {t:'Abonnement IPTV France Extra HD — 1 an', p:51.12, c:'individuel', d:'FR en HD/SD + sport FR. +5000 films/séries FR.'},
       {t:'Abonnement IPTV France Extra Full HD — 1 an', p:56.03, c:'individuel', d:'FR en FHD/HD/SD + sport complet, max PPV. +5000 VOD.'},
@@ -179,7 +134,9 @@
       {t:'Abonnement IPTV Mono VIP HD — 6 mois', p:44.83, c:'individuel', d:'Accès unique 6 mois, HD.'},
       {t:'Abonnement IPTV VIP 4K — 12 mois', p:100.46, c:'individuel', d:'VIP 4K premium 12 mois.'},
       {t:'Abonnement IPTV VIP Extra HD — 12 mois', p:68.03, c:'individuel', d:'VIP Extra HD 12 mois.'},
-      {t:'Promo — Deux Abonnements IPTV Mondial — 12 mois', p:54.99, c:'double', d:'2 x Monde 12 mois. VOD multi‑langues.'},
+
+      // Doubles & promos
+      {t:'Promo — Deux Abonnements IPTV Mondial — 12 mois', p:54.99, c:'double', d:'2 x Monde 12 mois. VOD multi-langues.'},
       {t:'Pack Deux Abonnements IPTV France SD — 1 an', p:54.74, c:'double', d:'2 x France SD 12 mois.'},
       {t:'Pack Deux Abonnements IPTV France Extra HD — 12 mois', p:61.32, c:'double', d:'2 x France Extra HD 12 mois.'},
       {t:'Pack Deux Abonnements IPTV France Extra Full HD — 12 mois', p:66.03, c:'double', d:'2 x France Extra FHD 12 mois.'},
@@ -187,26 +144,30 @@
       {t:'Pack Deux Abonnements IPTV Mono VIP HD — 12 mois', p:57.70, c:'double', d:'2 x Mono VIP HD 12 mois.'},
       {t:'Pack Deux Abonnements IPTV Mono VIP Extra HD — 12 mois', p:68.03, c:'double', d:'2 x Mono VIP Extra HD 12 mois.'},
       {t:'Pack Deux Abonnements IPTV VIP 4K — 12 mois', p:100.46, c:'double', d:'2 x VIP 4K 12 mois.'},
-      {t:'Abonnement IPTV Kids — 1 an', p:44.83, c:'autres', d:'Chaînes enfants + VOD kids.'},
-      {t:'Abonnement IPTV VOD Films & Séries', p:47.83, c:'autres', d:'Bibliothèque +20 000 films/séries.'},
-      {t:'VPN Anti‑Block IPTV — 12 mois', p:44.99, c:'autres', d:'Option anti‑blocage (recommandée).'},
-      {t:'VPN Anti‑Block IPTV — Illimité', p:154.00, c:'autres', d:'Formule illimitée.'},
-      {t:'XC IPTV Player (licence)', p:64.99, c:'apps', d:'Lecteur compatible XC.'},
-      {t:'Xtream Player IPTV (licence)', p:64.99, c:'apps', d:'Lecteur Xtream.'},
-      {t:'SSIPTV (licence)', p:64.99, c:'apps', d:'Lecteur Smart TV.'},
-      {t:'Perfect Player IPTV (licence)', p:64.99, c:'apps', d:'Lecteur Android.'},
-      {t:'Smart One IPTV (licence)', p:64.99, c:'apps', d:'Alternative SmartTV LG/Samsung.'},
-      {t:'SET IPTV (licence)', p:64.99, c:'apps', d:'Activation SET IPTV.'},
-      {t:'Duplex Play IPTV (licence)', p:64.99, c:'apps', d:'Lecteur multi‑plateformes.'},
-      {t:'TiviMate IPTV (licence)', p:64.99, c:'apps', d:'Guide TV/EPG au top (Android TV).'},
-      {t:'IPTV Stream Player (licence)', p:64.99, c:'apps', d:'Player multi‑devices.'},
-      {t:'IPTV Smarters Player (licence)', p:64.99, c:'apps', d:'Version Pro.'},
-      {t:'Plex IPTV (setup)', p:64.99, c:'apps', d:'Mise en place Plex + conseils.'},
-      {t:'Net IPTV (licence)', p:64.99, c:'apps', d:'Lecteur Smart TV (activation).'}
+
+      // Options (revendeur retiré précédemment, on garde Kids/VOD/VPN)
+      {t:'Abonnement IPTV Kids — 1 an', p:44.83, c:'options', d:'Chaînes enfants + VOD kids.'},
+      {t:'Abonnement IPTV VOD Films & Séries', p:47.83, c:'options', d:'Bibliothèque +20 000 films/séries.'},
+      {t:'VPN Anti-Block IPTV — 12 mois', p:44.99, c:'options', d:'Option anti-blocage (recommandée).'},
+      {t:'VPN Anti-Block IPTV — Illimité', p:154.00, c:'options', d:'Formule illimitée.'},
+
+      // Services streaming — SUR DEVIS (pas de prix affiché)
+      {t:'Netflix Premium', p:null, c:'services', d:'Abonnement streaming — sur devis.'},
+      {t:'YouTube Premium + Music', p:null, c:'services', d:'Abonnement streaming — sur devis.'},
+      {t:'Spotify Premium (New ID / Your ID)', p:null, c:'services', d:'Abonnement streaming — sur devis.'},
+      {t:'Microsoft 365 / Office 365', p:null, c:'services', d:'Compte / clés — sur devis.'},
+      {t:'Amazon Prime Video (TV / Mobile)', p:null, c:'services', d:'Abonnement streaming — sur devis.'},
+      {t:'Windows Key (1 PC)', p:null, c:'services', d:'Clé d’activation — sur devis.'},
+      {t:'Adobe (lifetime / apps)', p:null, c:'services', d:'Accès / licence — sur devis.'},
+      {t:'OpenAI ChatGPT-5 (Premium)', p:null, c:'services', d:'Accès premium — sur devis.'},
     ];
 
     // ====== RENDU ======
     const packsEl = document.getElementById('packs');
+    function priceHTML(p){
+      if(p==null || p===undefined){ return `<span class="surdevis">Sur devis</span>`; }
+      return `<span class="price">${Number(p).toLocaleString('fr-FR',{minimumFractionDigits:2, maximumFractionDigits:2})}€</span>`;
+    }
     function render(list){
       packsEl.innerHTML = '';
       list.forEach(item=>{
@@ -216,10 +177,10 @@
         card.innerHTML = `
           <div class="pack-title">
             <h3 style="margin:0">${item.t}</h3>
-            <span class="price">${item.p.toLocaleString('fr-FR',{minimumFractionDigits:2, maximumFractionDigits:2})}€</span>
+            ${priceHTML(item.p)}
           </div>
           <p class="feat">${item.d}</p>
-          <div class="controls"><a class="btn" data-pack="${item.t}">Commander sur WhatsApp</a></div>
+          <div class="controls"><a class="btn" data-pack="${item.t}">${item.p==null?'Demander un devis':'Commander sur WhatsApp'}</a></div>
         `;
         packsEl.appendChild(card);
       });
@@ -238,84 +199,48 @@
     filterCat.addEventListener('change', applyFilters);
     search.addEventListener('input', applyFilters);
 
+    // ====== PARTAGE (bouton vert en haut à droite) ======
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.onclick = async () => {
+      const url = window.location.href;
+      const data = {title:'JEFE IPTV 29 — Catalogue', text:'Catalogue privé JEFE IPTV 29', url};
+      if (navigator.share){ try { await navigator.share(data); } catch(e){} }
+      else { await navigator.clipboard.writeText(url); alert('Lien copié ✅'); }
+    };
+
     // ====== CONTACTS ======
+    const waBase = `https://wa.me/${SETTINGS.owner.whatsapp}`;
     function encodeMsg(pack){
       const m = SETTINGS.owner.defaultMessage.replace('{{PACK}}', pack || '—');
       return encodeURIComponent(m);
     }
     function setContactLinks(){
-      const waBtn = document.getElementById('waLink');
-      const headBtn = document.getElementById('whatsBtn');
-      const dockWa = document.getElementById('dock-wa');
-      const snap = document.getElementById('scLink');
-      const fb = document.getElementById('fbLink');
-
-      if(snap) snap.href = SETTINGS.owner.snapchat;
-      if(fb) fb.href = SETTINGS.owner.facebook || '#';
-
-      const hasWa = !!SETTINGS.owner.whatsapp;
-      const waHref = hasWa ? `https://wa.me/${SETTINGS.owner.whatsapp}?text=${encodeMsg('Demande générale')}` : '#';
-      [waBtn, headBtn, dockWa].forEach(el=>{
-        if(!el) return;
-        if(hasWa){ el.setAttribute('href', waHref); el.classList.add('primary'); el.style.opacity = '1'; }
-        else{
-          el.removeAttribute('href');
-          el.style.opacity = '.6';
-          el.style.cursor = 'not-allowed';
-          el.addEventListener('click', (e)=>{ e.preventDefault(); });
-        }
-      })
+      const q = encodeMsg('Demande générale');
+      document.getElementById('waLink').href = `${waBase}?text=${q}`;
+      document.getElementById('whatsBtn').href = `${waBase}?text=${q}`;
+      document.getElementById('mailLink').href = SETTINGS.owner.email;
+      document.getElementById('snapLink').href = SETTINGS.owner.snapchat;
     }
 
     function bindReserve(){
       document.querySelectorAll('[data-pack]').forEach(b=>{
-        b.onclick = ()=>{
-          if(!SETTINGS.owner.whatsapp){ alert('WhatsApp sera activé bientôt. Utilise l\'email ou Snap pour commander.'); return; }
-          window.open(`https://wa.me/${SETTINGS.owner.whatsapp}?text=${encodeMsg(b.dataset.pack)}`, '_blank');
-        }
+        const txt = b.dataset.pack;
+        b.onclick = ()=> window.open(`${waBase}?text=${encodeMsg(txt)}`, '_blank');
       })
     }
 
-    // ====== ACCÈS PRIVÉ (clé) ======
+    // ====== ACCÈS PRIVÉ ======
     const url = new URL(window.location.href);
     const k = url.searchParams.get('k');
     function openGate(){ document.getElementById('gate').style.display='grid' }
     function closeGate(){ document.getElementById('gate').style.display='none' }
-    function checkKey(){ const v=document.getElementById('gateKey').value; if(v===SETTINGS.secretKey){ closeGate(); localStorage.setItem('jefe_key_ok','1'); } }
-    window.checkKey = checkKey;
-    (function(){
-      const ok = localStorage.getItem('jefe_key_ok')==='1';
-      if(SETTINGS.secretKey){ if(k!==SETTINGS.secretKey && !ok){ openGate() } }
-    })();
+    function checkKey(){ const v=document.getElementById('gateKey').value; if(v===SETTINGS.secretKey){ closeGate() } }
+    if(SETTINGS.secretKey){ if(k!==SETTINGS.secretKey){ openGate() } }
 
-    // ====== INTRO (landing) ======
-    const intro = document.getElementById('intro');
-    const enterBtn = document.getElementById('enterBtn');
-    function hideIntro(){ intro.classList.add('hidden'); localStorage.setItem('jefe_entered','1'); }
-    if(enterBtn) enterBtn.addEventListener('click', ()=>{ hideIntro(); document.getElementById('packs').scrollIntoView({behavior:'smooth'}); });
-    (function(){
-      const skip = url.searchParams.get('go')==='catalogue' || url.searchParams.get('intro')==='0' || localStorage.getItem('jefe_entered')==='1';
-      if(skip){ intro.classList.add('hidden'); }
-    })();
-
-    // ====== Init ======
+    // Init
     document.getElementById('year').textContent = new Date().getFullYear();
     setContactLinks();
     render(DATA);
-
-    // ====== Bouton Partager (barre mobile) ======
-    (function(){
-      const btn = document.getElementById('dock-share');
-      const toast = document.getElementById('share-toast');
-      if(!btn) return;
-      async function copyLink(){
-        const link = new URL(window.location.href).toString();
-        try{ await navigator.clipboard.writeText(link); }
-        catch(e){ const ta=document.createElement('textarea'); ta.value=link; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
-        toast.classList.add('show'); setTimeout(()=> toast.classList.remove('show'), 1800);
-      }
-      btn.addEventListener('click', copyLink);
-    })();
   </script>
 </body>
 </html>
