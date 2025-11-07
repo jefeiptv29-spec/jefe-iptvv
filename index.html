@@ -3,307 +3,110 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow, noimageindex, nosnippet" />
-  <meta name="googlebot" content="noindex, nofollow" />
-  <title>JEFE IPTV 29 — Catalogue privé (texte)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="googlebot" content="noindex,nofollow" />
+  <title>JEFE IPTV 29 — Catalogue privé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0b10; --card:#121219; --muted:#a9b0bd;
-      --text:#e9edf5; --accent:#26d07c; --danger:#ef4444; --note:#6ee7b7;
-      --tag:#1f2937; --tagbd:#2a3342;
-    }
+    :root{--bg:#0b0b10;--card:#121219;--text:#e9e9f2;--muted:#a4a4b6;--accent:#6ee7b7;--ring:#272739}
     *{box-sizing:border-box}
-    html,body{margin:0; height:100%; background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
-    .wrap{max-width:1000px; margin:0 auto; padding:28px 18px 120px}
-    .header{display:flex; align-items:center; gap:14px; margin-bottom:18px}
-    .logo{width:46px; height:46px; border-radius:12px; background:#59e07122; outline:1px solid #2a4030}
-    h1{font-size:26px; margin:0 0 2px 0; letter-spacing:.2px}
-    .chip{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background:#0e141a; border:1px solid #1e2733; color:#c6cfdb; font-size:12px}
-    .hero{background:var(--card); border:1px solid #1e2733; border-radius:18px; padding:18px 16px; margin:14px 0 24px}
-    .hero h2{font-size:28px; line-height:1.08; margin:0 0 8px}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 600px at 80% -10%,#1b1b27,transparent),linear-gradient(180deg,#0b0b10 0%,#0b0b10 100%)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand strong{font-size:18px}
+    .badge{font-size:12px;border:1px solid var(--ring);padding:4px 8px;border-radius:999px;color:var(--muted)}
+    .controls{display:flex;gap:10px;flex-wrap:wrap}
+    select,input{background:#0f0f16;border:1px solid var(--ring);color:var(--text);border-radius:10px;padding:10px}
+    .grid{display:grid;gap:16px}
+    .packs{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .card{background:linear-gradient(180deg,#13131b,#0e0e16);border:1px solid var(--ring);border-radius:16px;padding:16px}
+    .pack-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .price{font-weight:700;font-size:22px}
     .muted{color:var(--muted)}
-    section{background:var(--card); border:1px solid #1e2733; border-radius:18px; padding:16px; margin:16px 0}
-    section h3{margin:0 0 12px; font-size:18px; letter-spacing:.3px}
-    .note{font-size:12px; color:#b9faca; background:#163122; border:1px solid #204b35; display:inline-block; padding:4px 8px; border-radius:999px; margin-left:8px}
-    .list{display:grid; grid-template-columns:1fr; gap:10px}
-    .item{padding:12px; border-radius:14px; background:#0e1117; border:1px solid #1a2230}
-    .item h4{margin:0 0 3px; font-size:15px}
-    .price{font-weight:800; letter-spacing:.3px}
-    .badge{display:inline-block; font-size:11px; color:#c7d0dc; padding:2px 7px; border-radius:999px; background:var(--tag); border:1px solid var(--tagbd); margin-right:6px}
-    .comment{margin:6px 0 0; color:#c6cfdb; font-size:13px}
-    .danger{color:var(--danger); font-weight:700}
-    .foot{font-size:13px; color:#c6cfdb}
-    .foot .li{margin:4px 0}
-    .contact .btn{display:block; text-decoration:none; color:var(--text); background:#0e141a; border:1px solid #223245; padding:12px 14px; border-radius:12px; margin:8px 0; text-align:center}
-    .contact .btn:active{opacity:.9}
-    .copy{margin-top:8px; font-size:12px; color:#9aa6b2}
-    @media(min-width:720px){ .list{grid-template-columns:1fr 1fr} }
+    .feat{font-size:13px;color:var(--muted);margin:6px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:12px;border:1px solid var(--ring);background:linear-gradient(180deg,#151520,#0f0f17);color:var(--text);font-weight:600}
+    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#2b4c2f,#1b2b1e)}
+    h2{margin:18px 0 8px}
+    .section-head{display:flex;align-items:center;justify-content:space-between}
+    footer{padding:36px 0;color:var(--muted);text-align:center}
+    .surdevis{font-size:13px;font-weight:600;color:gold}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="header">
-      <div class="logo"></div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <strong>JEFE IPTV 29 — Catalogue privé</strong>
+        <span class="badge">lien partagé uniquement</span>
+      </div>
+    </header>
+
+    <section class="section-head">
       <div>
-        <h1>JEFE IPTV 29 — Catalogue privé</h1>
-        <div class="chip">Lien partagé uniquement • Non référencé</div>
+        <h2>Packs disponibles</h2>
+        <p class="muted">Catalogue privé mis à jour — tarifs 2025.</p>
       </div>
-    </div>
+      <span class="badge">Paiements: Virement • Lydia • PayPal</span>
+    </section>
 
-    <div class="hero">
-      <h2>Tout ce qu’il faut, <span class="muted">au bon prix</span></h2>
-      <div class="muted">
-        IPTV 4K, packs doubles, VOD, Netflix, YouTube, Spotify, Microsoft 365, Adobe, ChatGPT.<br/>
-        <b>Durées claires</b> et <b>prix nets</b>. Lecture 100% texte (sans logos).
-      </div>
-    </div>
+    <div id="packs" class="grid packs"></div>
 
-    <!-- ABONNEMENTS IPTV -->
-    <section>
-      <h3>Abonnements IPTV — <span class="muted">durée par défaut : 12 mois</span><span class="note">tous visibles</span></h3>
-      <div class="list">
-        <div class="item">
-          <h4>France SD — 1 an</h4>
-          <div class="price">40 €</div>
-        </div>
-        <div class="item">
-          <h4>France Extra HD — 1 an</h4>
-          <div class="price">45 €</div>
-        </div>
-        <div class="item">
-          <h4>France Extra Full HD — 1 an</h4>
-          <div class="price">47 €</div>
-        </div>
-        <div class="item">
-          <h4>France Ultra UHD 4K — 1 an</h4>
-          <div class="price">52 €</div>
-        </div>
-        <div class="item">
-          <h4>VIP 4K (sans VOD) — 1 an</h4>
-          <div class="price">60 €</div>
-        </div>
-        <div class="item">
-          <h4>VIP 4K (avec VOD) — 1 an</h4>
-          <div class="price">62 €</div>
-        </div>
-        <div class="item">
-          <h4>Ultra — 2 serveurs — 1 an</h4>
-          <div class="price">62 €</div>
-        </div>
-        <div class="item">
-          <h4>Mono VIP — 1 an</h4>
-          <div class="price">49,80 €</div>
-        </div>
-        <div class="item">
-          <h4>Mono VIP Extra HD — 1 an</h4>
-          <div class="price">52 €</div>
-        </div>
-        <div class="item">
-          <h4>Mono VIP Extra 4K — 12 mois</h4>
-          <div class="price">54 €</div>
-        </div>
-        <div class="item">
-          <h4>Mono VIP Extra HD — 6 mois</h4>
-          <div class="price">52 €</div>
-        </div>
-        <div class="item">
-          <h4>Mono VIP HD — 6 mois</h4>
-          <div class="price">50 €</div>
-        </div>
-        <div class="item">
-          <h4>VIP 4K — 12 mois</h4>
-          <div class="price">62 €</div>
-        </div>
-        <div class="item">
-          <h4>VIP Extra HD — 12 mois</h4>
-          <div class="price">52 €</div>
-          <div class="comment">Ancien tarif 68 € (réajusté).</div>
-        </div>
-
-        <!-- Exemples de packs doubles/promos : CONSERVÉS, prix non modifiés -->
-        <div class="item">
-          <h4 class="badge">Pack double</h4>
-          <h4>IPTV + VOD — 12 mois</h4>
-          <div class="price">Prix promo (inchangé)</div>
-          <div class="comment">Offre duo, conditions identiques au pack d’origine.</div>
-        </div>
-        <div class="item">
-          <h4 class="badge">Promo</h4>
-          <h4>IPTV — 12 mois</h4>
-          <div class="price">Prix promo (inchangé)</div>
-        </div>
-
-        <!-- Ajustements demandés sur quelques packs (exemples) -->
-        <div class="item">
-          <h4>IPTV Sport FR + VOD (Netflix / Prime / Disney*) — 12 mois</h4>
-          <div class="price">38 €</div>
-          <div class="comment">Toutes les chaînes de sport FR + VOD (Netflix, Prime Video, Disney+). *Qualité et catalogue selon dispo.</div>
-        </div>
-        <div class="item">
-          <h4>IPTV (qualité standard) — 12 mois</h4>
-          <div class="price">40 €</div>
-          <div class="comment">Pack d’entrée, stabilité ok, idéal budgets serrés.</div>
-        </div>
-        <div class="item">
-          <h4>IPTV (qualité +) — 12 mois</h4>
-          <div class="price">45 €</div>
-          <div class="comment">Plus de sources et meilleure fluidité.</div>
-        </div>
-        <div class="item">
-          <h4>IPTV (qualité ++ / extra) — 12 mois</h4>
-          <div class="price">50 €</div>
-          <div class="comment">Meilleure stabilité sur événements live.</div>
-        </div>
-        <div class="item">
-          <h4>IPTV Premium — 12 mois</h4>
-          <div class="price">60 €</div>
-          <div class="comment">Priorité support + sources premium.</div>
-        </div>
-        <div class="item">
-          <h4>IPTV Ultra — 12 mois</h4>
-          <div class="price">65 €</div>
-          <div class="comment">Priorité haute + secours automatique.</div>
+    <section id="contact" style="margin-top:22px" class="grid" >
+      <div class="card">
+        <h3 style="margin:0 0 8px">Me contacter</h3>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+          <a class="btn" href="mailto:jefeiptv29@gmail.com">Email</a>
+          <a class="btn" href="https://www.snapchat.com/add/jefeiptv" target="_blank">Snapchat</a>
         </div>
       </div>
     </section>
 
-    <!-- OPTIONS / KITS / VOD -->
-    <section>
-      <h3>Options & suppléments</h3>
-      <div class="list">
-        <div class="item">
-          <h4>Kit IPTV — 1 an</h4>
-          <div class="price">45 €</div>
-          <div class="comment">Pack outil + assistance d’installation.</div>
-        </div>
-        <div class="item">
-          <h4>VOD — Films & Séries — 1 an</h4>
-          <div class="price">60 €</div>
-          <div class="comment">Catalogue évolutif, mises à jour régulières.</div>
-        </div>
-        <div class="item">
-          <h4>VPN</h4>
-          <div class="price danger">Supprimé</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES TIERS -->
-    <section>
-      <h3>Services additionnels (comptes/abonnements)</h3>
-      <div class="list">
-        <div class="item">
-          <h4>Netflix Premium — 12 mois</h4>
-          <div class="price">60 €</div>
-        </div>
-        <div class="item">
-          <h4>YouTube Premium + Music — 12 mois</h4>
-          <div class="price">50 €</div>
-        </div>
-
-        <!-- Spotify (base +10€) -->
-        <div class="item">
-          <h4>Spotify Premium (New-ID) — 12 mois</h4>
-          <div class="price">42,99 €</div>
-          <div class="comment">Base 32,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Spotify Premium (Your-ID) — 12 mois</h4>
-          <div class="price">47,99 €</div>
-          <div class="comment">Base 37,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Spotify Premium (New-ID) — 24 mois</h4>
-          <div class="price">62,99 €</div>
-          <div class="comment">Base 52,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Spotify Premium (Your-ID) — 24 mois</h4>
-          <div class="price">69,99 €</div>
-          <div class="comment">Base 59,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Spotify Premium — 6 mois</h4>
-          <div class="price">29,99 €</div>
-          <div class="comment">Base 19,99 € +10 €.</div>
-        </div>
-
-        <!-- Microsoft 365 (+5€) -->
-        <div class="item">
-          <h4>Microsoft 365 / Office 365 — 12 mois</h4>
-          <div class="price">24,99 €</div>
-          <div class="comment">Base 19,99 € +5 €.</div>
-        </div>
-        <div class="item">
-          <h4>Microsoft 365 / Office 365 — à vie</h4>
-          <div class="price">34,99 €</div>
-          <div class="comment">Base 29,99 € +5 €.</div>
-        </div>
-
-        <!-- Amazon Prime (+10€) -->
-        <div class="item">
-          <h4>Amazon Prime Video (TV) — 12 mois</h4>
-          <div class="price">39,99 €</div>
-          <div class="comment">Base 29,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Amazon Prime Video (TV) — 3 mois</h4>
-          <div class="price">19,99 €</div>
-          <div class="comment">Base 9,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Amazon Prime Video (Mobile) — 12 mois</h4>
-          <div class="price">29,99 €</div>
-          <div class="comment">Base 19,99 € +10 €.</div>
-        </div>
-        <div class="item">
-          <h4>Amazon Prime Video (Mobile) — 3 mois</h4>
-          <div class="price">15,99 €</div>
-          <div class="comment">Base 5,99 € +10 €.</div>
-        </div>
-
-        <!-- Windows Key : supprimé -->
-        <div class="item">
-          <h4>Windows Key (1 PC)</h4>
-          <div class="price danger">Supprimé</div>u
-        </div>
-
-        <!-- Adobe (+10€) -->
-        <div class="item">
-          <h4>Adobe PR / AE / LR / PS / Acrobat — lifetime (chacun)</h4>
-          <div class="price">19,99 €</div>
-          <div class="comment">Base 9,99 € +10 € par app.</div>
-        </div>
-        <div class="item">
-          <h4>Adobe — Total lifetime (bundle)</h4>
-          <div class="price">29,99 €</div>
-          <div class="comment">Base 19,99 € +10 €.</div>
-        </div>
-
-        <!-- OpenAI -->
-        <div class="item">
-          <h4>OpenAI ChatGPT-5 — 12 mois</h4>
-          <div class="price">100 €</div>
-          <div class="comment">Tarif arrondi (ancien ~89€).</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact">
-      <h3>Me contacter</h3>
-      <a class="btn" href="mailto:jefeiptv29@gmail.com">Email — jefeiptv29@gmail.com</a>
-      <a class="btn" href="https://www.snapchat.com/add/jefeiptv" target="_blank" rel="noreferrer">Snap — @jefeiptv</a>
-      <div class="copy">Paiements acceptés : virement, Lydia, PayPal. Délais habituels : 24–72h (selon pack). Acompte 30% possible pour réserver. Facture sur demande.</div>
-    </section>
-
-    <div class="foot">
-      <div class="li">© Page privée (non référencée) — merci de ne pas diffuser publiquement.</div>
-      <div class="li">Respect des lois locales et CGU des services. Cette page est un simple catalogue de prestations.</div>
-    </div>
+    <footer>© <span id="year"></span> JEFE IPTV 29 — Catalogue privé non référencé.</footer>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const DATA = [
+      // Individuels IPTV
+      {t:'Abonnement IPTV France Extra HD — 1 an', p:38, c:'individuel', d:'Toutes les chaînes de sport France + VOD (Netflix, Amazon Prime, Disney+).'},
+      {t:'Abonnement IPTV France Extra Full HD — 1 an', p:40, c:'individuel', d:'Bouquet FHD + Chaînes sport France + VOD (Netflix, Amazon Prime, Disney+).'},
+      {t:'Abonnement IPTV France Ultra UHD (4K) — 1 an', p:45, c:'individuel', d:'Bouquet 4K/UHD + Chaînes sport France + VOD 4K (Netflix, Amazon, Disney+).'},
+      {t:'Abonnement IPTV VIP 4K sans VOD — 12 mois', p:50, c:'individuel', d:'Sélection 4K premium, sans la bibliothèque VOD.'},
+      {t:'Abonnement IPTV Ultra Serveurs (2 serveurs) — 12 mois', p:60, c:'individuel', d:'Accès sur 2 serveurs — stabilité renforcée.'},
+
+      // Packs doubles
+      {t:'Pack Deux Abonnements IPTV France Extra UHD (4K) — 12 mois', p:65, c:'double', d:'2 x France Extra 4K 12 mois.'},
+
+      // Options
+      {t:'Abonnement IPTV Kids — 1 an', p:40, c:'options', d:'Chaînes enfants + VOD kids.'},
+
+      // Services streaming
+      {t:'Netflix Premium — 1 an', p:65, c:'services', d:'Abonnement complet Netflix Premium.'},
+      {t:'YouTube Premium + Music — 1 an', p:50, c:'services', d:'Abonnement YouTube sans pubs + Music.'},
+      {t:'Spotify Premium (New-ID) — 1 an', p:52.99, c:'services', d:'Musique illimitée — qualité Premium.'},
+      {t:'Microsoft 365 / Office 365 — Licence à vie', p:50, c:'services', d:'Suite Office complète (Word, Excel, Outlook…). Licence à vie.'},
+      {t:'Amazon Prime Video — 1 an', p:49.99, c:'services', d:'Streaming films/séries Prime Video.'},
+      {t:'Adobe Apps — Licence à vie (PS, PR, AE, LR)', p:30, c:'services', d:'Licence à vie complète des logiciels Adobe.'},
+      {t:'OpenAI ChatGPT-5 Premium — 1 an', p:90, c:'services', d:'Accès Premium IA (ChatGPT-5) — 12 mois.'},
+    ];
+
+    const packsEl = document.getElementById('packs');
+    function render(list){
+      packsEl.innerHTML = '';
+      list.forEach(x=>{
+        const priceHTML = x.p ? `<span class='price'>${x.p.toFixed(2)}€</span>` : `<span class='surdevis'>Sur devis</span>`;
+        const el = document.createElement('div');
+        el.className='card';
+        el.innerHTML = `<div class='pack-title'><h3>${x.t}</h3>${priceHTML}</div><p class='feat'>${x.d}</p>`;
+        packsEl.appendChild(el);
+      });
+    }
+    render(DATA);
+  </script>
 </body>
 </html>
